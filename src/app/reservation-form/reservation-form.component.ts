@@ -11,8 +11,15 @@ export class ReservationFormComponent implements OnInit{
 
   });
 
+  constructor(private formBuilder: FormBuilder) {}
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.reservationForm = this.formBuilder.group({
+      checkindate: ['', Validators.required],
+      checkOutdate: ['', Validators.required],
+      guestName: ['', Validators.required],
+      guestEmail: ['', [Validators.required, Validators.email]],
+      roomNumber: ['', Validators.required]
+    })
   }
 
   onSubmit() {
